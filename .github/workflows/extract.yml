@@ -1,4 +1,6 @@
 name: Extract hash
+
+on:
   workflow_dispatch:
     inputs:
       version:
