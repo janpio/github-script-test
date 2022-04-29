@@ -27,6 +27,6 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            const hash = ${{ github.event.inputs.version }}.split('.').pop()
+            const hash = context.payload.inputs.version.split('.').pop()
             core.setOutput('hash', hash)
       - run: echo "${{steps.extract-engine-commit-hash.outputs.hash}}"
