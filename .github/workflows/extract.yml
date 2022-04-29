@@ -1,5 +1,4 @@
-name: Update Engines Version
-on:
+name: Extract hash
   workflow_dispatch:
     inputs:
       version:
@@ -15,9 +14,15 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+    
+    - name: View context attributes
+      uses: actions/github-script@v6
+      with:
+        script: console.log(context)
+    
       - name: Extract Engine Commit hash from version
         id: extract-engine-commit-hash
-        uses: actions/github-script@0.9.0
+        uses: actions/github-script@v6
         with:
           script: |
             const hash = ${{ github.event.inputs.version }}.split('.').pop()
